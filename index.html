@@ -1,0 +1,2834 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Atlas de Arcillas de Venezuela</title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/MapaBaseEstados_Venezuela_0.js"></script>
+        <script src="data/MapaGeologicoLitologia_1.js"></script>
+        <script src="data/MapaBaseLimiteEstados_2.js"></script>
+        <script src="data/MapaBaseMARCARIBE_3.js"></script>
+        <script src="data/MapaBaseRIOSYLAGUNAS_FINAL_4.js"></script>
+        <script src="data/MapaArcillasArcillas_Miranda_5.js"></script>
+        <script src="data/MapaArcillasArcillas_Carabobo_6.js"></script>
+        <script src="data/MapaArcillasArcillas_Aragua_7.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[9.156515039957817,-68.57418947401847],[10.74450108896266,-65.32329693705665]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_MapaBaseEstados_Venezuela_0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ESTADO</strong><br />' + (feature.properties['ESTADO'] !== null ? autolinker.link(feature.properties['ESTADO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Length'] !== null ? autolinker.link(feature.properties['Shape_Length'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaBaseEstados_Venezuela_0_0() {
+            return {
+                fill: false,
+                stroke: false,
+                interactive: false
+            }
+        }
+        map.createPane('pane_MapaBaseEstados_Venezuela_0');
+        map.getPane('pane_MapaBaseEstados_Venezuela_0').style.zIndex = 400;
+        map.getPane('pane_MapaBaseEstados_Venezuela_0').style['mix-blend-mode'] = 'normal';
+        var layer_MapaBaseEstados_Venezuela_0 = new L.geoJson(json_MapaBaseEstados_Venezuela_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaBaseEstados_Venezuela_0',
+            layerName: 'layer_MapaBaseEstados_Venezuela_0',
+            pane: 'pane_MapaBaseEstados_Venezuela_0',
+            onEachFeature: pop_MapaBaseEstados_Venezuela_0,
+            style: style_MapaBaseEstados_Venezuela_0_0,
+        });
+        bounds_group.addLayer(layer_MapaBaseEstados_Venezuela_0);
+        map.addLayer(layer_MapaBaseEstados_Venezuela_0);
+        function pop_MapaGeologicoLitologia_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nomenclatura</strong><br />' + (feature.properties['Nomenclatura'] !== null ? autolinker.link(feature.properties['Nomenclatura'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Edad</strong><br />' + (feature.properties['Edad'] !== null ? autolinker.link(feature.properties['Edad'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Unidad</strong><br />' + (feature.properties['Unidad'] !== null ? autolinker.link(feature.properties['Unidad'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        var pattern_MapaGeologicoLitologia_1_0 = new L.StripePattern({
+            weight: 0.5,
+            spaceWeight: 5.0,
+            color: '#000000',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 315
+        });
+        pattern_MapaGeologicoLitologia_1_0.addTo(map);
+        function style_MapaGeologicoLitologia_1_0(feature) {
+            switch(String(feature.properties['Nomenclatura'])) {
+                case 'E1c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e1e4lc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,167,127,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'E1eg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,167,95,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e2e3mf':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,147,60,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e3e4ca':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,147,10,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e3e4m2':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,112,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e4e5g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,167,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e4e6gu':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,201,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'e4gv':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,173,90,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ɛ2O3ct':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,148,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1a':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1aa':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1b':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1bb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1bba':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1bc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1bf':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1bm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1bz':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1ch':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,205,85,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1cm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3K1cs':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JK1a':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,38,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JK1c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JK1ce':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JK1cea':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JK1sp':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,68,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKd':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,255,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,235,197,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKh':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,168,132,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKsa':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,68,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKsp':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,68,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKspec':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,68,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'JKsppn':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,68,137,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Jlp':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,180,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lh':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,205,87,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lh1':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,25,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lh2':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,25,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lhb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(75,151,123,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lhg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,137,112,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lhm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,137,112,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lhp':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,137,112,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1lhs':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,137,112,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1mb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,242,208,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1ms':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,137,68,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1mv':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,161,68,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1ua':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,185,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1vccc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,185,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1vcccc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,185,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1vcec':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,185,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1vcsi':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,138,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K1vcsid':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,138,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2bo':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(199,215,158,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2boz':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(199,215,158,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2bq':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,199,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2cg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(132,0,168,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2ch':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(132,0,168,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2chd':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(132,0,168,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2ec':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,224,102,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2fm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(242,250,140,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2fu':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,239,116,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(132,0,168,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2gc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(18,150,51,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2gd':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,0,132,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2lc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,216,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2m':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,204,64,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2mc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,204,14,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2mcg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,204,64,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2mlc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,204,64,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2mm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,204,64,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2o':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(79,179,235,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2p':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,216,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'K2t':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,216,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k3k4lc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,216,74,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k4k6m':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k5e1mu':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k5e1muIII':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k5e1muIV':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,168,168,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k5e1muV':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(5,191,166,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k6e':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,222,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'k6e1g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,179,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kch':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,145,214,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'KE1o':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,198,78,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Km':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,210,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kmc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,181,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ksu':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,255,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N1N2a':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N1N2c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N1N2s':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,102,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N2m':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N2Q1c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N2Q1cb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N2Q1p':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,191,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'N2Q1t':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPeg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,190,232,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPet':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,168,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPetc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,204,159,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPetg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,193,135,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPla':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,127,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPlac':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,118,118,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPlad':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(245,122,122,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPlay':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,127,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPlg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,170,102,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZch':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,168,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZchg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,168,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsj':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsja':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsjb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsjc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsje':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsjf':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsjg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsjm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPPZsjt':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,102,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NPs':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,179,66,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Och':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,180,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'P1g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,88,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'P2c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,167,148,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PJn':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(155,151,176,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PPMPpm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,189,216,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pt':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,64,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ptn':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,63,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PZch':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,168,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pzchg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,168,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PZKc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,192,141,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PZti':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q1B10':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q1fa':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q1g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,237,179,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q1lp':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q1m':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,242,199,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q1ta':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Q2a':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'q4s':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,242,211,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Qal-f':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Qtr':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Relleno':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false,
+                fillOpacity: 1,
+                fillPattern: pattern_MapaGeologicoLitologia_1_0,
+                interactive: true,
+            }
+                    break;
+                case 'Sbs':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,235,150,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tmn':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,152,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'tqa':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,157,188,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'tqb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,191,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tqb':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,191,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tqm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tr':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,172,67,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε2O3c':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,198,156,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε2O3cc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(178,178,178,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,180,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε2O3g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,157,111,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε2O3n':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε2O3t':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,157,111,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε2O3to':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε3g':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ε3gh':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'εc':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'εca':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'εcf':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,176,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'εcg':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,176,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'εcm':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'εcs':
+                    return {
+                pane: 'pane_MapaGeologicoLitologia_1',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,207,134,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_MapaGeologicoLitologia_1');
+        map.getPane('pane_MapaGeologicoLitologia_1').style.zIndex = 401;
+        map.getPane('pane_MapaGeologicoLitologia_1').style['mix-blend-mode'] = 'normal';
+        var layer_MapaGeologicoLitologia_1 = new L.geoJson(json_MapaGeologicoLitologia_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaGeologicoLitologia_1',
+            layerName: 'layer_MapaGeologicoLitologia_1',
+            pane: 'pane_MapaGeologicoLitologia_1',
+            onEachFeature: pop_MapaGeologicoLitologia_1,
+            style: style_MapaGeologicoLitologia_1_0,
+        });
+        bounds_group.addLayer(layer_MapaGeologicoLitologia_1);
+        map.addLayer(layer_MapaGeologicoLitologia_1);
+        function pop_MapaBaseLimiteEstados_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>OBJECTID</strong><br />' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LEFT_FID</strong><br />' + (feature.properties['LEFT_FID'] !== null ? autolinker.link(feature.properties['LEFT_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>RIGHT_FID</strong><br />' + (feature.properties['RIGHT_FID'] !== null ? autolinker.link(feature.properties['RIGHT_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Shape_Length</strong><br />' + (feature.properties['Shape_Length'] !== null ? autolinker.link(feature.properties['Shape_Length'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaBaseLimiteEstados_2_0() {
+            return {
+                pane: 'pane_MapaBaseLimiteEstados_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_MapaBaseLimiteEstados_2');
+        map.getPane('pane_MapaBaseLimiteEstados_2').style.zIndex = 402;
+        map.getPane('pane_MapaBaseLimiteEstados_2').style['mix-blend-mode'] = 'normal';
+        var layer_MapaBaseLimiteEstados_2 = new L.geoJson(json_MapaBaseLimiteEstados_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaBaseLimiteEstados_2',
+            layerName: 'layer_MapaBaseLimiteEstados_2',
+            pane: 'pane_MapaBaseLimiteEstados_2',
+            onEachFeature: pop_MapaBaseLimiteEstados_2,
+            style: style_MapaBaseLimiteEstados_2_0,
+        });
+        bounds_group.addLayer(layer_MapaBaseLimiteEstados_2);
+        map.addLayer(layer_MapaBaseLimiteEstados_2);
+        function pop_MapaBaseMARCARIBE_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Nombre</strong><br />' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaBaseMARCARIBE_3_0() {
+            return {
+                pane: 'pane_MapaBaseMARCARIBE_3',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,112,255,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_MapaBaseMARCARIBE_3');
+        map.getPane('pane_MapaBaseMARCARIBE_3').style.zIndex = 403;
+        map.getPane('pane_MapaBaseMARCARIBE_3').style['mix-blend-mode'] = 'normal';
+        var layer_MapaBaseMARCARIBE_3 = new L.geoJson(json_MapaBaseMARCARIBE_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaBaseMARCARIBE_3',
+            layerName: 'layer_MapaBaseMARCARIBE_3',
+            pane: 'pane_MapaBaseMARCARIBE_3',
+            onEachFeature: pop_MapaBaseMARCARIBE_3,
+            style: style_MapaBaseMARCARIBE_3_0,
+        });
+        bounds_group.addLayer(layer_MapaBaseMARCARIBE_3);
+        map.addLayer(layer_MapaBaseMARCARIBE_3);
+        function pop_MapaBaseRIOSYLAGUNAS_FINAL_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>NOMBRE</strong><br />' + (feature.properties['NOMBRE'] !== null ? autolinker.link(feature.properties['NOMBRE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>TIPO</strong><br />' + (feature.properties['TIPO'] !== null ? autolinker.link(feature.properties['TIPO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaBaseRIOSYLAGUNAS_FINAL_4_0() {
+            return {
+                pane: 'pane_MapaBaseRIOSYLAGUNAS_FINAL_4',
+                opacity: 1,
+                color: 'rgba(110,110,110,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,112,255,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_MapaBaseRIOSYLAGUNAS_FINAL_4');
+        map.getPane('pane_MapaBaseRIOSYLAGUNAS_FINAL_4').style.zIndex = 404;
+        map.getPane('pane_MapaBaseRIOSYLAGUNAS_FINAL_4').style['mix-blend-mode'] = 'normal';
+        var layer_MapaBaseRIOSYLAGUNAS_FINAL_4 = new L.geoJson(json_MapaBaseRIOSYLAGUNAS_FINAL_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaBaseRIOSYLAGUNAS_FINAL_4',
+            layerName: 'layer_MapaBaseRIOSYLAGUNAS_FINAL_4',
+            pane: 'pane_MapaBaseRIOSYLAGUNAS_FINAL_4',
+            onEachFeature: pop_MapaBaseRIOSYLAGUNAS_FINAL_4,
+            style: style_MapaBaseRIOSYLAGUNAS_FINAL_4_0,
+        });
+        bounds_group.addLayer(layer_MapaBaseRIOSYLAGUNAS_FINAL_4);
+        map.addLayer(layer_MapaBaseRIOSYLAGUNAS_FINAL_4);
+        function pop_MapaArcillasArcillas_Miranda_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID_INTERNO</strong><br />' + (feature.properties['ID_INTERNO'] !== null ? autolinker.link(feature.properties['ID_INTERNO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>E</strong><br />' + (feature.properties['E'] !== null ? autolinker.link(feature.properties['E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>N</strong><br />' + (feature.properties['N'] !== null ? autolinker.link(feature.properties['N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>TIPO</strong><br />' + (feature.properties['TIPO'] !== null ? autolinker.link(feature.properties['TIPO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INFORME</strong><br />' + (feature.properties['INFORME'] !== null ? autolinker.link(feature.properties['INFORME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaArcillasArcillas_Miranda_5_0(feature) {
+            switch(String(feature.properties['TIPO'])) {
+                case 'ARTICULO':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Miranda_5',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(30,96,250,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'INVESTI':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Miranda_5',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(250,139,57,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TEG':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Miranda_5',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(32,215,41,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_MapaArcillasArcillas_Miranda_5_1(feature) {
+            switch(String(feature.properties['TIPO'])) {
+                case 'ARTICULO':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Miranda_5',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(30,96,250,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,96,250,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'INVESTI':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Miranda_5',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(250,176,124,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(250,176,124,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TEG':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Miranda_5',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(32,215,41,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,215,41,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_MapaArcillasArcillas_Miranda_5');
+        map.getPane('pane_MapaArcillasArcillas_Miranda_5').style.zIndex = 405;
+        map.getPane('pane_MapaArcillasArcillas_Miranda_5').style['mix-blend-mode'] = 'normal';
+        var layer_MapaArcillasArcillas_Miranda_5 = new L.geoJson.multiStyle(json_MapaArcillasArcillas_Miranda_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaArcillasArcillas_Miranda_5',
+            layerName: 'layer_MapaArcillasArcillas_Miranda_5',
+            pane: 'pane_MapaArcillasArcillas_Miranda_5',
+            onEachFeature: pop_MapaArcillasArcillas_Miranda_5,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_MapaArcillasArcillas_Miranda_5_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_MapaArcillasArcillas_Miranda_5_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_MapaArcillasArcillas_Miranda_5);
+        map.addLayer(layer_MapaArcillasArcillas_Miranda_5);
+        function pop_MapaArcillasArcillas_Carabobo_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID_INTERNO</strong><br />' + (feature.properties['ID_INTERNO'] !== null ? autolinker.link(feature.properties['ID_INTERNO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>E</strong><br />' + (feature.properties['E'] !== null ? autolinker.link(feature.properties['E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>N</strong><br />' + (feature.properties['N'] !== null ? autolinker.link(feature.properties['N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>TIPO</strong><br />' + (feature.properties['TIPO'] !== null ? autolinker.link(feature.properties['TIPO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INFORME</strong><br />' + (feature.properties['INFORME'] !== null ? autolinker.link(feature.properties['INFORME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaArcillasArcillas_Carabobo_6_0(feature) {
+            switch(String(feature.properties['TIPO'])) {
+                case 'ARTICULO':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(30,96,250,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'INVESTI':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(250,139,57,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TEG':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(32,215,41,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_MapaArcillasArcillas_Carabobo_6_1(feature) {
+            switch(String(feature.properties['TIPO'])) {
+                case 'ARTICULO':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(30,96,250,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,96,250,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'INVESTI':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(250,176,124,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(250,176,124,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TEG':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(32,215,41,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,215,41,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_MapaArcillasArcillas_Carabobo_6');
+        map.getPane('pane_MapaArcillasArcillas_Carabobo_6').style.zIndex = 406;
+        map.getPane('pane_MapaArcillasArcillas_Carabobo_6').style['mix-blend-mode'] = 'normal';
+        var layer_MapaArcillasArcillas_Carabobo_6 = new L.geoJson.multiStyle(json_MapaArcillasArcillas_Carabobo_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaArcillasArcillas_Carabobo_6',
+            layerName: 'layer_MapaArcillasArcillas_Carabobo_6',
+            pane: 'pane_MapaArcillasArcillas_Carabobo_6',
+            onEachFeature: pop_MapaArcillasArcillas_Carabobo_6,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_MapaArcillasArcillas_Carabobo_6_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_MapaArcillasArcillas_Carabobo_6_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_MapaArcillasArcillas_Carabobo_6);
+        map.addLayer(layer_MapaArcillasArcillas_Carabobo_6);
+        function pop_MapaArcillasArcillas_Aragua_7(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID_INTERNO</strong><br />' + (feature.properties['ID_INTERNO'] !== null ? autolinker.link(feature.properties['ID_INTERNO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>E</strong><br />' + (feature.properties['E'] !== null ? autolinker.link(feature.properties['E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>N</strong><br />' + (feature.properties['N'] !== null ? autolinker.link(feature.properties['N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>TIPO</strong><br />' + (feature.properties['TIPO'] !== null ? autolinker.link(feature.properties['TIPO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INFORME</strong><br />' + (feature.properties['INFORME'] !== null ? autolinker.link(feature.properties['INFORME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MapaArcillasArcillas_Aragua_7_0(feature) {
+            switch(String(feature.properties['TIPO'])) {
+                case 'INVESTI':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Aragua_7',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(250,139,57,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TEG':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Aragua_7',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(32,215,41,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_MapaArcillasArcillas_Aragua_7_1(feature) {
+            switch(String(feature.properties['TIPO'])) {
+                case 'INVESTI':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Aragua_7',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(250,176,124,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(250,176,124,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TEG':
+                    return {
+                pane: 'pane_MapaArcillasArcillas_Aragua_7',
+                radius: 4.9091,
+                opacity: 1,
+                color: 'rgba(32,215,41,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,215,41,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_MapaArcillasArcillas_Aragua_7');
+        map.getPane('pane_MapaArcillasArcillas_Aragua_7').style.zIndex = 407;
+        map.getPane('pane_MapaArcillasArcillas_Aragua_7').style['mix-blend-mode'] = 'normal';
+        var layer_MapaArcillasArcillas_Aragua_7 = new L.geoJson.multiStyle(json_MapaArcillasArcillas_Aragua_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MapaArcillasArcillas_Aragua_7',
+            layerName: 'layer_MapaArcillasArcillas_Aragua_7',
+            pane: 'pane_MapaArcillasArcillas_Aragua_7',
+            onEachFeature: pop_MapaArcillasArcillas_Aragua_7,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_MapaArcillasArcillas_Aragua_7_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_MapaArcillasArcillas_Aragua_7_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_MapaArcillasArcillas_Aragua_7);
+        map.addLayer(layer_MapaArcillasArcillas_Aragua_7);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>Atlas de Arcillas de Venezuela</h2>';
+            };
+            title.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'MapaArcillas Arcillas_Aragua<br /><table><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Aragua_7_INVESTI0.png" /></td><td>INVESTI</td></tr><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Aragua_7_TEG1.png" /></td><td>TEG</td></tr></table>': layer_MapaArcillasArcillas_Aragua_7,'MapaArcillas Arcillas_Carabobo<br /><table><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Carabobo_6_ARTICULO0.png" /></td><td>ARTICULO</td></tr><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Carabobo_6_INVESTI1.png" /></td><td>INVESTI</td></tr><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Carabobo_6_TEG2.png" /></td><td>TEG</td></tr></table>': layer_MapaArcillasArcillas_Carabobo_6,'MapaArcillas Arcillas_Miranda<br /><table><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Miranda_5_ARTICULO0.png" /></td><td>ARTICULO</td></tr><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Miranda_5_INVESTI1.png" /></td><td>INVESTI</td></tr><tr><td style="text-align: center;"><img src="legend/MapaArcillasArcillas_Miranda_5_TEG2.png" /></td><td>TEG</td></tr></table>': layer_MapaArcillasArcillas_Miranda_5,'<img src="legend/MapaBaseRIOSYLAGUNAS_FINAL_4.png" /> MapaBase RIOSYLAGUNAS_FINAL': layer_MapaBaseRIOSYLAGUNAS_FINAL_4,'<img src="legend/MapaBaseMARCARIBE_3.png" /> MapaBase MARCARIBE': layer_MapaBaseMARCARIBE_3,'<img src="legend/MapaBaseLimiteEstados_2.png" /> MapaBase LimiteEstados': layer_MapaBaseLimiteEstados_2,'MapaGeologico Litologia<br /><table><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_E1c0.png" /></td><td>E1c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e1e4lc1.png" /></td><td>e1e4lc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_E1eg2.png" /></td><td>E1eg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e2e3mf3.png" /></td><td>e2e3mf</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e3e4ca4.png" /></td><td>e3e4ca</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e3e4m25.png" /></td><td>e3e4m2</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e4e5g6.png" /></td><td>e4e5g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e4e6gu7.png" /></td><td>e4e6gu</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_e4gv8.png" /></td><td>e4gv</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ɛ2O3ct9.png" /></td><td>ɛ2O3ct</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1a10.png" /></td><td>J3K1a</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1aa11.png" /></td><td>J3K1aa</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1b12.png" /></td><td>J3K1b</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1bb13.png" /></td><td>J3K1bb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1bba14.png" /></td><td>J3K1bba</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1bc15.png" /></td><td>J3K1bc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1bf16.png" /></td><td>J3K1bf</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1bm17.png" /></td><td>J3K1bm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1bz18.png" /></td><td>J3K1bz</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1c19.png" /></td><td>J3K1c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1ch20.png" /></td><td>J3K1ch</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1cm21.png" /></td><td>J3K1cm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_J3K1cs22.png" /></td><td>J3K1cs</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JK1a23.png" /></td><td>JK1a</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JK1c24.png" /></td><td>JK1c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JK1ce25.png" /></td><td>JK1ce</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JK1cea26.png" /></td><td>JK1cea</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JK1sp27.png" /></td><td>JK1sp</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKd28.png" /></td><td>JKd</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKg29.png" /></td><td>JKg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKh30.png" /></td><td>JKh</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKsa31.png" /></td><td>JKsa</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKsp32.png" /></td><td>JKsp</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKspec33.png" /></td><td>JKspec</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_JKsppn34.png" /></td><td>JKsppn</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Jlp35.png" /></td><td>Jlp</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lh36.png" /></td><td>K1lh</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lh137.png" /></td><td>K1lh1</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lh238.png" /></td><td>K1lh2</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lhb39.png" /></td><td>K1lhb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lhg40.png" /></td><td>K1lhg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lhm41.png" /></td><td>K1lhm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lhp42.png" /></td><td>K1lhp</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1lhs43.png" /></td><td>K1lhs</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1mb44.png" /></td><td>K1mb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1ms45.png" /></td><td>K1ms</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1mv46.png" /></td><td>K1mv</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1ua47.png" /></td><td>K1ua</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1vccc48.png" /></td><td>K1vccc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1vcccc49.png" /></td><td>K1vcccc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1vcec50.png" /></td><td>K1vcec</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1vcsi51.png" /></td><td>K1vcsi</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K1vcsid52.png" /></td><td>K1vcsid</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2bo53.png" /></td><td>K2bo</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2boz54.png" /></td><td>K2boz</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2bq55.png" /></td><td>K2bq</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2cg56.png" /></td><td>K2cg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2ch57.png" /></td><td>K2ch</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2chd58.png" /></td><td>K2chd</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2ec59.png" /></td><td>K2ec</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2fm60.png" /></td><td>K2fm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2fu61.png" /></td><td>K2fu</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2g62.png" /></td><td>K2g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2gc63.png" /></td><td>K2gc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2gd64.png" /></td><td>K2gd</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2lc65.png" /></td><td>K2lc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2m66.png" /></td><td>K2m</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2mc67.png" /></td><td>K2mc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2mcg68.png" /></td><td>K2mcg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2mlc69.png" /></td><td>K2mlc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2mm70.png" /></td><td>K2mm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2o71.png" /></td><td>K2o</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2p72.png" /></td><td>K2p</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_K2t73.png" /></td><td>K2t</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k3k4lc74.png" /></td><td>k3k4lc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k4k6m75.png" /></td><td>k4k6m</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k5e1mu76.png" /></td><td>k5e1mu</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k5e1muIII77.png" /></td><td>k5e1muIII</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k5e1muIV78.png" /></td><td>k5e1muIV</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k5e1muV79.png" /></td><td>k5e1muV</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k6e80.png" /></td><td>k6e</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_k6e1g81.png" /></td><td>k6e1g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Kch82.png" /></td><td>Kch</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_KE1o83.png" /></td><td>KE1o</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Km84.png" /></td><td>Km</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Kmc85.png" /></td><td>Kmc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ksu86.png" /></td><td>ksu</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N1N2a87.png" /></td><td>N1N2a</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N1N2c88.png" /></td><td>N1N2c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N1N2s89.png" /></td><td>N1N2s</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N2m90.png" /></td><td>N2m</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N2Q1c91.png" /></td><td>N2Q1c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N2Q1cb92.png" /></td><td>N2Q1cb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N2Q1p93.png" /></td><td>N2Q1p</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_N2Q1t94.png" /></td><td>N2Q1t</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPeg95.png" /></td><td>NPeg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPet96.png" /></td><td>NPet</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPetc97.png" /></td><td>NPetc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPetg98.png" /></td><td>NPetg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPla99.png" /></td><td>NPla</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPlac100.png" /></td><td>NPlac</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPlad101.png" /></td><td>NPlad</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPlay102.png" /></td><td>NPlay</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPlg103.png" /></td><td>NPlg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZch104.png" /></td><td>NPPZch</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZchg105.png" /></td><td>NPPZchg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsj106.png" /></td><td>NPPZsj</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsja107.png" /></td><td>NPPZsja</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsjb108.png" /></td><td>NPPZsjb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsjc109.png" /></td><td>NPPZsjc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsje110.png" /></td><td>NPPZsje</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsjf111.png" /></td><td>NPPZsjf</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsjg112.png" /></td><td>NPPZsjg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsjm113.png" /></td><td>NPPZsjm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPPZsjt114.png" /></td><td>NPPZsjt</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_NPs115.png" /></td><td>NPs</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Och116.png" /></td><td>Och</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_P1g117.png" /></td><td>P1g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_P2c118.png" /></td><td>P2c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_PJn119.png" /></td><td>PJn</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_PPMPpm120.png" /></td><td>PPMPpm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Pt121.png" /></td><td>Pt</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Ptn122.png" /></td><td>Ptn</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_PZch123.png" /></td><td>PZch</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Pzchg124.png" /></td><td>Pzchg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_PZKc125.png" /></td><td>PZKc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_PZti126.png" /></td><td>PZti</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q1B10127.png" /></td><td>Q1B10</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q1fa128.png" /></td><td>Q1fa</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q1g129.png" /></td><td>Q1g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q1lp130.png" /></td><td>Q1lp</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q1m131.png" /></td><td>Q1m</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q1ta132.png" /></td><td>Q1ta</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Q2a133.png" /></td><td>Q2a</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_q4s134.png" /></td><td>q4s</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Qalf135.png" /></td><td>Qal-f</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Qtr136.png" /></td><td>Qtr</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Relleno137.png" /></td><td>Relleno</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Sbs138.png" /></td><td>Sbs</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Tmn139.png" /></td><td>Tmn</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_tqa140.png" /></td><td>tqa</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_tqb141.png" /></td><td>tqb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Tqb142.png" /></td><td>Tqb</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Tqm143.png" /></td><td>Tqm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_Tr144.png" /></td><td>Tr</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε2O3c145.png" /></td><td>ε2O3c</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε2O3cc146.png" /></td><td>ε2O3cc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε2O3g147.png" /></td><td>ε2O3g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε2O3n148.png" /></td><td>ε2O3n</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε2O3t149.png" /></td><td>ε2O3t</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε2O3to150.png" /></td><td>ε2O3to</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε3g151.png" /></td><td>ε3g</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_ε3gh152.png" /></td><td>ε3gh</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_εc153.png" /></td><td>εc</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_εca154.png" /></td><td>εca</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_εcf155.png" /></td><td>εcf</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_εcg156.png" /></td><td>εcg</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_εcm157.png" /></td><td>εcm</td></tr><tr><td style="text-align: center;"><img src="legend/MapaGeologicoLitologia_1_εcs158.png" /></td><td>εcs</td></tr></table>': layer_MapaGeologicoLitologia_1,'': layer_MapaBaseEstados_Venezuela_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_MapaBaseEstados_Venezuela_0.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['ESTADO'] !== null?String('<div style="color: #000000; font-size: 6pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['ESTADO']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_MapaBaseEstados_Venezuela_0'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_MapaBaseEstados_Venezuela_0,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'ESTADO'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_MapaBaseEstados_Venezuela_0]);
+        map.on("zoomend", function(){
+            resetLabels([layer_MapaBaseEstados_Venezuela_0]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_MapaBaseEstados_Venezuela_0]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_MapaBaseEstados_Venezuela_0]);
+        });
+        </script>
+    </body>
+</html>
